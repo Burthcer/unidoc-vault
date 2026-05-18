@@ -283,7 +283,7 @@ export default function DashboardPage() {
     if (files.length === 0) return;
     toast.loading("Zipping vault...", { id: "zip" });
     const zip = new JSZip();
-    files.forEach((item) => zip.file(item.compressed.name, item.compressed));
+    files.forEach((item: any) => zip.file(item.compressed.name, item.compressed));
     const content = await zip.generateAsync({ type: "blob" });
     saveAs(content, `${isGlobal ? "All_Docs" : activeVault?.name.replace(/[^a-zA-Z0-9]/g, "_")}_Vault.zip`);
     toast.success("Vault downloaded!", { id: "zip" });
