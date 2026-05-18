@@ -297,7 +297,7 @@ export default function DashboardPage() {
     try {
       const encryptedPayload: Record<string, EncryptedVaultFilePair> = {};
       
-      for (const [key, item] of Object.entries(completedDocs)) {
+      for (const [key, item] of Object.entries(completedDocs as any)) {
         const encCompressed = await encryptFile(item.compressed, cryptoPassword);
         const encOriginal = await encryptFile(item.original, cryptoPassword);
         encryptedPayload[key] = { 
